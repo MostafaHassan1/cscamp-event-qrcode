@@ -13,11 +13,8 @@
     <br>
     <p>&nbsp; Thank you for participating in CS Camp event.</p>
     <p>Please <strong>Save this QR Code image</strong> and show it to the event organizer when you attend</p>
-    {{-- <img src="{!!$message->embedData(QrCode::format('svg')->generate(url("/participants/{$participant->id}/confirm/{$hash}")), 'QrCode.svg'
-        , 'image/svg' )!!}"> --}}
     {!! QrCode::size(250)
     ->generate(url("/participants/{$participant->id}/confirm/{$hash}")); !!}
-
 </body>
 
 </html>

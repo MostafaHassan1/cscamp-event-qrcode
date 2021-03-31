@@ -20,11 +20,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('participants', ParticipantsController::class)->middleware('auth')->except(['show', 'edit']);
+Route::resource('participants', ParticipantsController::class)->middleware('auth')->except(['show', 'edit', 'update']);
 Route::get('participants/{participant}/confirm/{hash}', [ParticipantsController::class, 'confirm']);
-Route::get('qrcode', function () {
-    return QrCode::size(250)
-        ->backgroundColor(255, 255, 204)
-        ->generate(url("/participants//confirm"));
-});
+Route::get('participants/{participant}/update', [ParticipantsController::class, 'attend'])->middleware('auth')->name('participants.attend');

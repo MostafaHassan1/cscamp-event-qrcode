@@ -20,7 +20,7 @@ class ParticipantsController extends Controller
      */
     public function index()
     {
-        $participants = Participant::paginate(10);
+        $participants = Participant::orderBy('updated_at', 'desc')->paginate(10);
         return view('participants.index', compact('participants'));
     }
 
@@ -50,20 +50,25 @@ class ParticipantsController extends Controller
 
         return redirect()->route('participants.index');
     }
-
-
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Participant  $participant
-     * @return \Illuminate\Http\Response
+     * returns the participant information if the hash is equal to his id
      */
-    public function update(Request $request, Participant $participant)
+    public function confirm(Participant $participant, $hash)
     {
-        //
+        if (!Hash::check($participant->id, $hash)) //if the hash not equal return 404
+            abort(404);
+
+        return view('participants.confirm', compact('participant'));
     }
 
+    public function attend(Participant $participant)
+    {
+        $participant->update(['attended' => true]);
+
+        session()->flash('success', 'Updated the participant successfully');
+
+        return redirect()->route('participants.index');
+    }
     /**
      * Remove the specified resource from storage.
      *
