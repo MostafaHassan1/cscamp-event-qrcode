@@ -16,7 +16,7 @@ class CreateParticipantsTable extends Migration
         Schema::create('participants', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('phone_number');
+            $table->string('phone_number')->unique();
             $table->string('email')->unique();
             $table->string('department');
             $table->integer('academic_year')->unsigned();
