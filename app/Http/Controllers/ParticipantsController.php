@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\participants\CreateParticipantRequest;
+use App\Mail\ParticipantQRCodeMail;
 use App\Models\Participant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+
+// use LaravelQRCode\Facades\QRCode;
 
 class ParticipantsController extends Controller
 {
@@ -31,14 +35,16 @@ class ParticipantsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage, and send an email to it.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreateParticipantRequest $request)
     {
-        Participant::create($request->validated());
+        $participant = Participant::create($request->validated());
+
+        Mail::to($participant)->send(new ParticipantQRCodeMail($participant));
 
         session()->flash('success', 'Created the participants and sent the email successfully');
 
