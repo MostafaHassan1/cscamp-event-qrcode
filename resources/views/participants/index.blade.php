@@ -26,7 +26,7 @@
                         <th>Vjudge</th>
                         <th>Department</th>
                         <th>Academic Year</th>
-                        <th>Attendend</th>
+                        <th>Attended</th>
                         <th></th>
                     </thead>
                     <tbody>
@@ -39,7 +39,7 @@
                             <td>{{$participant->vjudge}}</td>
                             <td>{{$participant->department}}</td>
                             <td>{{$participant->academic_year}}</td>
-                            <td>{{$participant->attendend ? 'Yes' : 'No'}}</td>
+                            <td>{{$participant->attended ? 'Yes' : 'No'}}</td>
                             <td>
                                 <form action="{{route('participants.destroy', $participant->id)}}" method="post">
                                     @method('DELETE')

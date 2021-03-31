@@ -21,7 +21,7 @@ class CreateParticipantsTable extends Migration
             $table->string('department');
             $table->integer('academic_year')->unsigned();
             $table->string('vjudge');
-            $table->boolean('attendend')->default(false);
+            $table->boolean('attended')->default(false);
             $table->timestamps();
         });
     }
