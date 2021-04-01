@@ -26,5 +26,5 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::resource('participants', ParticipantsController::class)->middleware('auth')->except(['show', 'edit', 'update']);
-Route::get('participants/{participant}/confirm/{hash}', [ParticipantsController::class, 'confirm'])->where('search', '.*');
+Route::get('participants/{participant}/confirm/{hash}', [ParticipantsController::class, 'confirm']);
 Route::get('participants/{participant}/update', [ParticipantsController::class, 'attend'])->middleware('auth')->name('participants.attend');
