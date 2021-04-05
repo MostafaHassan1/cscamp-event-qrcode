@@ -112,23 +112,39 @@
             </td>
         </tr>
         <tr>
-            <td class="headline">Hello {{$participant->name}}!</td>
-        </tr>
-        <tr>
-            <td style="padding: 2rem">
-                Thank you for participating in CS Camp event. <br> Please Save this QR Code
-                image and show it to the event organizer when you attend
-            </td>
+            <td class="headline"> Dear contestant,</td>
         </tr>
         <tr>
             <td>
+                Thank you for your interest in joining CS Camp Problem Solving Contest.
+                <p>
+                    Date: Thursday, April 8th. <br>
+                    Contest time: 2 hours. <br>
+                    Place: (معمل خيرت)
+                </p>
+                <p class="headline">
+                    Contest Schedule <br>
+                    <p>
+
+                        1) You must attend at 10:45 am (sharp) for Registration.
+                    </p>
+                    <p>
+
+                        2) The contest will start at 11:15 am (sharp) and end at 1:35 am
+                        then, at 1:45 we will have the certificate awarding ceremony and rewards.
+                    </p>
+
+                </p>
+
+                -This is your QR Code for registration: <br> <br>
+
                 <div>
                     <!--[if mso]>
                         <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:50px;v-text-anchor:middle;width:200px;" arcsize="8%" stroke="f" fillcolor="#178f8f">
                           <w:anchorlock/>
                           <center>
                         <![endif]-->
-                    <img src="{!!$message->embedData(QrCode::format('png')
+                    <img src="{!!$message->embedData(QrCode::size(250)->format('png')
                         ->generate(url("/participants/{$participant->id}/confirm/{$hash}")) , 'QrCode.png'
                         , 'image/png' )!!}">
                     <!--[if mso]>
@@ -136,6 +152,39 @@
                         </v:roundrect>
                       <![endif]-->
                 </div>
+                <p class="headline">
+
+                    Please follow this instructions
+                </p>
+                <p>
+                    1) You can't enter the contest without your QR Code.
+
+                </p>
+                <p>
+
+                    2) You must wear a mask that covers your nose and mouth and not remove it at any time inside the
+                    laboratory.
+                </p>
+                <p>
+
+                    3) It is allowed to use paper and pen and bring a hard copy (anything
+                    that is not soft is allowed, such as a dictionary, written paper, books ... etc.)
+                </p>
+                <p>
+
+                    4) It is not allowed to use soft copy (flash, mobile, calculator ... etc.)
+                </p>
+                <p>
+                    5) It is not allowed to open anything on the computer during the Countest except <br> <br>
+                    a) vjudge <br> b) online c ++ compiler <br>
+                    c) visual studio <br> d) The calculator installed in the computer
+                </p>
+                <p>
+                    6) Whatever goes against this instruction will be disqualified
+                </p>
+
+                Best of luck,
+                CS Camp Team.
             </td>
         </tr>
     </table>
