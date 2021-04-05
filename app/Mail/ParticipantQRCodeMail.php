@@ -32,6 +32,6 @@ class ParticipantQRCodeMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.participantQR');
+        return $this->view('mails.participantQR')->subject('CS Camp Problem Solving Event');
     }
 }
