@@ -42,6 +42,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('participants.index') }}">Paritcipants</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('events.index') }}">Events</a>
+                        </li>
                         @endauth
                     </ul>
 

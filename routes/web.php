@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ParticipantsController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,6 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::resource('participants', ParticipantsController::class)->middleware('auth')->except(['show', 'edit', 'update']);
 Route::get('participants/{participant}/confirm/{hash}', [ParticipantsController::class, 'confirm'])->where('hash', '.*');
 Route::get('participants/{participant}/update', [ParticipantsController::class, 'attend'])->middleware('auth')->name('participants.attend');
+
+
+Route::resource('events', EventsController  ::class)->middleware('auth')->except(['edit', 'update']);

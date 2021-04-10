@@ -7,7 +7,7 @@
             <div class="card-header">
                 <div class="d-flex">
                     <div class="p-2">
-                        <h2>Create A Participant</h2>
+                        <h2>Create new Participant</h2>
                     </div>
                     <div class="ml-auto p-2"><a href="{{route('participants.index')}}" class="btn btn-success">All
                             Participants</a></div>
